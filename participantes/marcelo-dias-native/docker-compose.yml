@@ -2,7 +2,9 @@ version: '3.9'
 
 services:
   app1: &app
-    image: maruero/rinha-de-backend-2025:skylake-20250811-v1
+    build:
+      context: .
+      dockerfile: Dockerfile
     hostname: app1
     environment:
       - FALLBACK_ENABLED=false
@@ -20,7 +22,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.4"
+          cpus: "0.5"
           memory: "112MB"
 
   app2:
@@ -39,7 +41,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.4"
+          cpus: "0.5"
           memory: "112MB"
 
   haproxy:
@@ -58,7 +60,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.7"
+          cpus: "0.5"
           memory: "124MB"
 volumes:
   sockets:
